@@ -8,7 +8,7 @@ A Simple TODO list program in the form of a Discord bot
 
 ## Setup
 1. Create your discord application [here](https://discord.com/developers/applications). Copy the token and application id as client id.
-2. Invite your bot into your server in the menu 0Auth2 > URL Generator, make sure checklist these for the scopes:
+2. Invite your bot into your server in the menu 0Auth2 > URL Generator, make sure checklist these scopes:
    - bot: Send Messages & Add Reaction
    - applications.commands
 3. Clone this repo, `git clone https://github.com/stackpan/discord-todo-bot`.
