@@ -1,0 +1,19 @@
+[
+  {
+    "userId": "123456789102345",
+    "todo": [
+      {
+        "todoId": "1234567891023450",
+        "content": "Activity A"
+      },
+      {
+        "todoId": "1234567891023451",
+        "content": "Activity B"
+      },
+      {
+        "todoId": "1234567891023452",
+        "content": "Activity C"
+      }
+    ]
+  }
+]
