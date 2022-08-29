@@ -41,7 +41,6 @@ module.exports = {
         switch (interaction.options.getSubcommand()) {
             case 'list':
                 const userData = getUserData(interaction.user.id);
-                console.info(userData);
 
                 if (userData.todo.length === 0) todoEmbed.setDescription('Kamu belum mempunyai TODO');
                 else {
