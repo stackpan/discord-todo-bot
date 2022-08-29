@@ -14,5 +14,5 @@ A Simple TODO list program in the form of a Discord bot
 3. Clone this repo, `git clone https://github.com/stackpan/discord-todo-bot`.
 4. Cd this repo folder in your local computer, rename or copy `config.json.template` to `config.json`.
 5. Open file `config.json`, paste your token and client id into this file.
-6. Install the dependencies using `npm init`.
+6. Install the dependencies using `npm install`.
 7. Run this project using `npm run start`
