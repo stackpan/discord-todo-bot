@@ -1,14 +1,14 @@
 {
   "name": "discord-todolist",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple todo list program in form of discord bot",
   "main": "index.js",
   "scripts": {
     "prestart": "node ./config/deployCommands.js",
     "start": "node ./index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["discord"],
+  "author": "stackpan",
   "license": "ISC",
   "dependencies": {
     "@discordjs/rest": "^1.1.0",
