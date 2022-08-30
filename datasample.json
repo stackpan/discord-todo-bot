@@ -4,15 +4,18 @@
     "todo": [
       {
         "todoId": "1234567891023450",
-        "content": "Activity A"
+        "content": "Activity A",
+        "isDone": true
       },
       {
         "todoId": "1234567891023451",
-        "content": "Activity B"
+        "content": "Activity B",
+        "isDone": false
       },
       {
         "todoId": "1234567891023452",
-        "content": "Activity C"
+        "content": "Activity C",
+        "isDone": true
       }
     ]
   }

@@ -3,6 +3,7 @@ const getUserData = require('../handlers/getUserData');
 const checkUserData = require('../handlers/checkUserData');
 const createTodo = require('../handlers/createTodo');
 const removeTodo = require('../handlers/removeTodo');
+const crossTodo = require('../handlers/crossTodo');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -32,12 +33,12 @@ module.exports = {
                         .setRequired(true)))
         .addSubcommand(subCommand =>
             subCommand
-                .setName('checklist')
-                .setDescription('Mark complete to your TODO')
+                .setName('done')
+                .setDescription('Cross out your TODO')
                 .addNumberOption(option =>
                     option
                         .setName('index')
-                        .setDescription('Number index of your TODO to checklist')
+                        .setDescription('Number index of your TODO to cross out')
                         .setRequired(true))),
     async execute(interaction) {
         checkUserData(interaction.user.id);
@@ -56,7 +57,9 @@ module.exports = {
                     let description = '';
 
                     for (let i = 0; i < userData.todo.length; i++) {
-                        description += `**${i + 1}.** ${userData.todo[i].content}\n`;
+                        const todo = userData.todo[i];
+                        const contentSpace = (todo.isDone) ? `~~${todo.content}~~` : todo.content;
+                        description += `**${i + 1}.** ${contentSpace}`;
                     }
 
                     todoEmbed.setDescription(description);
@@ -70,14 +73,24 @@ module.exports = {
                 interaction.reply('Your todo was created successfully. :white_check_mark:');
                 break;
             case 'remove':
-                const index = interaction.options.getNumber('index');
+                const indexRemove = interaction.options.getNumber('index');
 
-                if (index <= 0) interaction.reply(`The index you entered is not valid! :warning:`);
-                else if (index > getUserData(interaction.user.id).todo.length) interaction.reply(`You don\'t have TODO in index ${index}! :x:`);
+                if (indexRemove <= 0) interaction.reply(`The index you entered is not valid! :warning:`);
+                else if (indexRemove > getUserData(interaction.user.id).todo.length) interaction.reply(`You don\'t have TODO at index ${indexRemove}! :x:`);
                 else {
-                    removeTodo(interaction.user.id, index - 1);
+                    removeTodo(interaction.user.id, indexRemove - 1);
                     interaction.reply('Your TODO was successfully deleted at index 2. :white_check_mark:');
                 }
+                break;
+            case 'done':
+                const indexDone = interaction.options.getNumber('index');
+                if (indexDone <= 0) interaction.reply(`The index you entered is not valid! :warning:`);
+                else if (indexDone > getUserData(interaction.user.id).todo.length) interaction.reply(`You don\'t have TODO at index ${indexDone}! :x:`);
+                else {
+                    crossTodo(interaction.user.id, indexDone - 1);
+                    interaction.reply('Your TODO was successfully crossed out at index 2. :white_check_mark:');
+                }
+                // TODO: create crossed out TODO validator if the todo is already crossed out then tell to user;
                 break;
         }
     }

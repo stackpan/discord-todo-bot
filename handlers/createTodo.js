@@ -10,6 +10,7 @@ module.exports = function (userId, todo) {
     data[index].todo.push({
         id: todoId,
         content: todo,
+        isDone: false,
     });
 
     console.log(`A TODO created for userId: ${userId}`);

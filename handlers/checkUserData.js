@@ -7,6 +7,7 @@ module.exports = function (userId) {
         data.push({
             userId: userId,
             todo: [],
+            isDone: false,
         });
 
         console.log(`New user data created for userId: ${userId}`);
