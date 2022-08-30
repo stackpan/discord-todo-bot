@@ -28,7 +28,16 @@ module.exports = {
                 .addNumberOption(option =>
                     option
                         .setName('index')
-                        .setDescription('Number index of your TODO')
+                        .setDescription('Number index of your TODO to delete')
+                        .setRequired(true)))
+        .addSubcommand(subCommand =>
+            subCommand
+                .setName('checklist')
+                .setDescription('Mark complete to your TODO')
+                .addNumberOption(option =>
+                    option
+                        .setName('index')
+                        .setDescription('Number index of your TODO to checklist')
                         .setRequired(true))),
     async execute(interaction) {
         checkUserData(interaction.user.id);
@@ -36,18 +45,18 @@ module.exports = {
         const todoEmbed = new EmbedBuilder()
             .setColor(0x0099FF)
             .setAuthor({ name: interaction.user.tag, iconURL: interaction.user.avatarURL()})
-            .setTitle(`${interaction.user.username} TODO`);
+            .setTitle(`> ${interaction.user.username} TODO :notepad_spiral:`);
 
         switch (interaction.options.getSubcommand()) {
             case 'list':
                 const userData = getUserData(interaction.user.id);
 
-                if (userData.todo.length === 0) todoEmbed.setDescription('Kamu belum mempunyai TODO');
+                if (userData.todo.length === 0) todoEmbed.setDescription('*You don\'t have a TODO* :face_with_raised_eyebrow:');
                 else {
                     let description = '';
 
                     for (let i = 0; i < userData.todo.length; i++) {
-                        description += `${i + 1}). ${userData.todo[i].content}\n`;
+                        description += `**${i + 1}.** ${userData.todo[i].content}\n`;
                     }
 
                     todoEmbed.setDescription(description);
@@ -58,16 +67,16 @@ module.exports = {
             case 'add':
                 const todo = interaction.options.getString('todo');
                 createTodo(interaction.user.id, todo);
-                interaction.reply('TODO kamu berhasil dibuat.');
+                interaction.reply('Your todo was created successfully. :white_check_mark:');
                 break;
             case 'remove':
                 const index = interaction.options.getNumber('index');
 
-                if (index <= 0) interaction.reply(`Index yang kamu masukkan tidak valid!`);
-                else if (index > getUserData(interaction.user.id).todo.length) interaction.reply(`Kamu tidak mempunyai TODO di index ke-${index}!`);
+                if (index <= 0) interaction.reply(`The index you entered is not valid! :warning:`);
+                else if (index > getUserData(interaction.user.id).todo.length) interaction.reply(`You don\'t have TODO in index ${index}! :x:`);
                 else {
                     removeTodo(interaction.user.id, index - 1);
-                    interaction.reply('TODO kamu berhasil dihapus.');
+                    interaction.reply('Your TODO was successfully deleted at index 2. :white_check_mark:');
                 }
                 break;
         }
