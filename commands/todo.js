@@ -59,7 +59,7 @@ module.exports = {
                     for (let i = 0; i < userData.todo.length; i++) {
                         const todo = userData.todo[i];
                         const contentSpace = (todo.isDone) ? `~~${todo.content}~~` : todo.content;
-                        description += `**${i + 1}.** ${contentSpace}`;
+                        description += `**${i + 1}.** ${contentSpace}\n`;
                     }
 
                     todoEmbed.setDescription(description);

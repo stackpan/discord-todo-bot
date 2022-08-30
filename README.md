@@ -19,9 +19,12 @@ A Simple TODO list program in the form of a Discord bot
 
 ## Changelog
 
-### v1.1.0 
 *Aug 30, 2022*
+### v1.1.0
 - New command: `/todo done`. This command is to allow user to mark done their TODO list. The marked list will be displayed in strikethrough.
 - Change interaction language from Bahasa to English.
 - Add text styles to decorate the embed.
 - Add some emojis in all interactions and embed to make it clearer and easy to read for user.
+
+### v1.1.1
+- Fix new line in todo list embed.
