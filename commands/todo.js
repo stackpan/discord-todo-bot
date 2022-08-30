@@ -34,7 +34,7 @@ module.exports = {
         .addSubcommand(subCommand =>
             subCommand
                 .setName('done')
-                .setDescription('Cross out your TODO')
+                .setDescription('Mark done your TODO')
                 .addNumberOption(option =>
                     option
                         .setName('index')
