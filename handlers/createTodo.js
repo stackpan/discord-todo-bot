@@ -1,7 +1,7 @@
-const data = require('./data');
-const { customAlphabet } = require('nanoid');
+import data from './data.js';
+import { customAlphabet } from "nanoid";
 
-module.exports = function (userId, todo) {
+export default function (userId, todo) {
     const index = data.findIndex(userData => userData.userId === userId);
 
     const nanoId = customAlphabet('1234567890', 4);

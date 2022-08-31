@@ -1,6 +1,6 @@
-const data = require('./data');
+import data from './data.js';
 
-module.exports = function (userId) {
+export default function (userId) {
     const userData = data.filter(userData => userData.userId === userId)[0];
     return userData;
 }

@@ -1,6 +1,6 @@
-const data = require('./data');
+import data from './data.js';
 
-module.exports = function (userId, todoIndex) {
+export default function (userId, todoIndex) {
     const index = data.findIndex(userData => userData.userId === userId);
 
     data[index].todo[todoIndex].isDone = true;

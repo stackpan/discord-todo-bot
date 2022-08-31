@@ -1,6 +1,6 @@
-const data = require('./data');
+import data from './data.js';
 
-module.exports = function (userId) {
+export default function (userId) {
     const userData = data.find(userData => userData.userId === userId);
 
     if (!userData) {

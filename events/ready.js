@@ -1,4 +1,4 @@
-module.exports = {
+export const event = {
     name: 'ready',
     once: true,
     execute(client) {

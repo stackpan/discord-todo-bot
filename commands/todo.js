@@ -1,11 +1,13 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const getUserData = require('../handlers/getUserData');
-const checkUserData = require('../handlers/checkUserData');
-const createTodo = require('../handlers/createTodo');
-const removeTodo = require('../handlers/removeTodo');
-const crossTodo = require('../handlers/crossTodo');
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import {
+    getUserData,
+    checkUserData,
+    createTodo,
+    removeTodo,
+    crossTodo
+} from '../handlers/handler.js';
 
-module.exports = {
+export const command = {
     data: new SlashCommandBuilder()
         .setName('todo')
         .setDescription('TODO list manager')
